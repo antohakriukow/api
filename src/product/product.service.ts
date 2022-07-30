@@ -36,6 +36,22 @@ export class ProductService {
 		return updateDoc
 	}
 
+	async toggleActive(_id: string) {
+		const updateDoc = await this.ProductModel.findById(_id)
+
+		if (!updateDoc) throw new NotFoundException('Document not found')
+		const newValue = !updateDoc.isActive
+		return this.ProductModel.findByIdAndUpdate(
+			_id,
+			{
+				$set: { isActive: newValue },
+			},
+			{
+				new: true,
+			}
+		).exec()
+	}
+
 	async delete(_id: string) {
 		const deleteDoc = this.ProductModel.findByIdAndDelete(_id).exec()
 

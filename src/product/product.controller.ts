@@ -28,6 +28,12 @@ export class ProductsController {
 		return this.ProductService.getAll()
 	}
 
+	@UsePipes(new ValidationPipe())
+	@Put('active/:_id')
+	async toggleActive(@Param('_id', IdValidationPipe) _id: string) {
+		return this.ProductService.toggleActive(_id)
+	}
+
 	@Post()
 	@HttpCode(200)
 	async create(@Body() dto: ProductDto) {
