@@ -1,17 +1,18 @@
-import { IsBoolean, IsString } from 'class-validator'
+import { IsBoolean, IsNumber, IsOptional, IsString } from 'class-validator'
 
 export class ProductDto {
 	@IsString()
 	title: string
 
-	@IsString()
+	@IsNumber()
 	price: number
 
 	@IsString()
 	description: string
 
+	@IsOptional()
 	@IsBoolean()
-	isActive: boolean
+	isActive?: boolean
 
 	@IsString()
 	imageUrl: string

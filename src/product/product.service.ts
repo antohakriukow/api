@@ -22,7 +22,10 @@ export class ProductService {
 	}
 
 	async create(dto: ProductDto) {
-		const document = await this.ProductModel.create(dto)
+		const document = await this.ProductModel.create({
+			...dto,
+			isActive: true,
+		})
 		return document
 	}
 
