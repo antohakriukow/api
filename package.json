@@ -8,6 +8,7 @@
 	"scripts": {
 		"prebuild": "rimraf dist",
 		"build": "nest build",
+		"deploy": "npm run build && scp -r ./dist/* antohakriukow@51.250.27.153:/home/antohakriukow/kriukov-api",
 		"format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
 		"start": "nest start",
 		"dev": "nest start --watch",
